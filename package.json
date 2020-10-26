@@ -1,0 +1,44 @@
+{
+  "name": "rollup-plugin-git-info",
+  "version": "1.0.0",
+  "description": "Rollup plugin to export git/build information",
+  "license": "BSD-3-Clause",
+  "repository": "github:vapier/rollup-plugin-git-info",
+  "author": "Mike Frysinger",
+  "homepage": "https://github.com/vapier/rollup-plugin-git-info",
+  "bugs": "https://github.com/vapier/rollup-plugin-git-info/issues",
+  "main": "dist/rollup-plugin-git-info.cjs",
+  "module": "dist/rollup-plugin-git-info.js",
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "npm run lint:docs && npm run lint:js && npm run lint:package",
+    "lint:docs": "prettier --single-quote --arrow-parens avoid --trailing-comma all --write README.md",
+    "lint:js": "eslint --fix --cache src test rollup.config.js --ext .js",
+    "lint:package": "prettier --write package.json --plugin=prettier-plugin-package",
+    "prepare": "npm run build",
+    "pretest": "npm run build",
+    "test": "cross-env NODE_ENV=--experimental-vm-modules mocha --require esm test/*.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "git",
+    "rollup",
+    "rollup-plugin"
+  ],
+  "dependencies": {
+    "@rollup/plugin-json": "^4.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.12.0",
+    "eslint-plugin-jsdoc": "^30.7.3",
+    "esm": "^3.2.25",
+    "mocha": "^8.2.0",
+    "prettier": "^2.1.2",
+    "prettier-plugin-package": "^1.2.0",
+    "rollup": "^2.32.0"
+  }
+}
